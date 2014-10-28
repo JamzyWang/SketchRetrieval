@@ -1,6 +1,12 @@
-clear all;clc;
+%
+%函数功能：计算图像的梯度大小以及梯度方向
+%输入参数：图像
+%输出参数：图像的梯度大小和梯度方向
+%
 
-I = imread('bird1.jpg');
+function [G_x,G_y,G_magnitude,edge_orientation] = calculate_gradient(imgPath)
+
+I = imread(imgPath);
 I = imresize(I,[256 256]);
 I = rgb2gray(I);
 
@@ -9,7 +15,7 @@ fx=fy';             %定义水平方向梯度模板
 
 imshow(I);
 
-Gy=imfilter(I,fy,'replicate');    %计算垂直方向梯度
-Gx=imfilter(I,fx,'replicate');    %计算水平方向梯度
-Ged=sqrt(double(Gx.^2+Gy.^2));    %计算梯度幅值
-edge_orientation = atan2(double(Gy), double(Gx)) / pi * 180; %计算梯度方向
+G_y=imfilter(I,fy,'replicate');    %计算垂直方向梯度
+G_x=imfilter(I,fx,'replicate');    %计算水平方向梯度
+G_magnitude=sqrt(double(G_x.^2+G_y.^2));    %计算梯度幅值
+edge_orientation = atan2(double(G_y), double(G_x)) / pi * 180; %计算梯度方向
