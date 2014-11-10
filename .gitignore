@@ -1,6 +1,7 @@
 image_database/
 image_dataset/
 intermediate_data/
+lib/
 retrieval_result/
 script/
 sketch_dataset/

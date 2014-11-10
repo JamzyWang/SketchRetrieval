@@ -7,8 +7,8 @@
 function [G_x,G_y,G_magnitude,edge_orientation] = calculate_gradient(imgPath)
 
 I = imread(imgPath);
-I = imresize(I,[256 256]);
-I = rgb2gray(I);
+I = imresize(I,[64 64]);
+% I = rgb2gray(I);
 
 fy=[-1 0 1];        %定义垂直方向梯度模板
 fx=fy';             %定义水平方向梯度模板
