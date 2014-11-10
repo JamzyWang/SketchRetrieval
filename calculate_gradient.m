@@ -1,7 +1,7 @@
 %
-%函数功能：计算图像的梯度大小以及梯度方向
-%输入参数：图像
-%输出参数：图像的梯度大小和梯度方向
+%函数功能：计算图像的梯度
+%输入参数：图像的地址
+%输出参数：图像X方向的梯度，Y方向的梯度，梯度的幅度，梯度的方向
 %
 
 function [G_x,G_y,G_magnitude,edge_orientation] = calculate_gradient(imgPath)
