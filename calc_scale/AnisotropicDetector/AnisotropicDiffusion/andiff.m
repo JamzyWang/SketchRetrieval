@@ -1,4 +1,7 @@
 function [result]  = andiff( u, lambda, sigma, m, stepsize, nosteps, varargin )
+
+        % [result] = andiff( img, linspace(1.2,16,t), 2.7, 3, 1000, 30);
+        
 % Anisotropic diffusion for color images
 % If the image is gray, the image will be turned into color image first
 % Anisotropic Diffusion of image u
@@ -26,12 +29,17 @@ function [result]  = andiff( u, lambda, sigma, m, stepsize, nosteps, varargin )
 %       displayed image.
 varargout = {};
 
+
+% 判断输入图像是否是RGB类型的
 if ndims(u) ~= 3
   fprintf('Wrong image type!\n');
   u(:,:,2) = u(:,:,1);  
   u(:,:,3) = u(:,:,1);  
 end
+
 Nch = size(u,3);
+
+%把输入图像转换为double类型的
 if strcmp(class(u),'double')
     y0 = u;
 else
@@ -147,6 +155,7 @@ fprintf(2,']\n');
 %%Scale Selection
 [R, scaleMat, contours] = scaleSelection(m, n, nosteps, dxMat, dyMat, imageMat, y0, methodName);
 
+
 % Build return args
 % including y, scaleMat, R, dx0, dy0, contours, imageMat
 result.y = y;
@@ -156,6 +165,7 @@ result.contours = contours;
 result.imageMat = imageMat;
 result.diffusionMat = diffusionMat;
 % result.energyDiff = energyDiff;
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [TGFlag, methodName] = parse_inputs(varargin)
