@@ -12,7 +12,7 @@ function [ output_args ] = sketch_preprocessing( input_args )
 %   ARP£ºimage¡ª¡ª>canny±ßÔµ¼ì²â¡ª¡ª>Gaussian±ä»»;sketch¡ª¡ª> thinned version
 %   ERH£ºimage¡ª¡ª>multiple resolution Canny edge detection.
 %   Key shapes: image¡ª¡ª> Canny operator in a multi scale manner; sketch¡ª¡ª>a thinning operation instead of the Canny operator.
-%
+%   a thinning operation :edge(rgb2gray(gfhog),'zerocross');
 
 
 
