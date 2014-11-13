@@ -1,10 +1,12 @@
 %% matlabpool local 4;
 
-addpath(genpath('E:\matlab\calc_scale\AnisotropicDetector\'));
+% addpath(genpath('F:\paper\experiment\sketch_retrieval_project\calc_scale\AnisotropicDetector\'));
+
+addpath(fullfile(pwd,'AnisotropicDetector'));
 
 %% Begin Operation
 t = 30;
-sigma = 2.7;
+sigma = 6;
 
 lowScale = 2:3:17;
 
@@ -19,12 +21,14 @@ for i = 1:len
   fprintf('%d processing %s\n', i, imgPath);
 
 %   img = imresize(imread(imgPath), [240 320]);
-   img = imresize(imread(imgPath), [128 128]);
+   img = imresize(imread(imgPath), [256 256]);
 
 
   [result] = andiff( img, linspace(1.2,16,t), sigma, 3, 1000, t);
   a = max(result.scaleMat, [], 3);
-
+  figure;imshow(a);
+  
+  
   [filethstr, name, ext] = fileparts(imgPath);
 
   fid = fopen(fullfile(filethstr, strcat(name, '._s')), 'w');
