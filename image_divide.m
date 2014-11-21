@@ -1,5 +1,6 @@
 function [ C] = image_divide( image,cell_percent,image_percent_1,image_percent_2)
-%IMAGE_DIVIDE 此处显示有关此函数的摘要
+
+%%IMAGE_DIVIDE 此处显示有关此函数的摘要
 %   此处显示详细说明
 %   这个函数用于图像分割，把输入的图像分为2*2个cell
 %   C = mat2cell(image,[size(image,1)/2 size(image,1)/2],[size(image,1)/2 size(image,1)/2]);
@@ -22,8 +23,8 @@ function [ C] = image_divide( image,cell_percent,image_percent_1,image_percent_2
 %
 %
 
-[percent_1,percent_2,percent_3,percent_4,C]  = calculate(image);
-%
+
+%%
 %
 %
 %
@@ -32,33 +33,7 @@ function [ C] = image_divide( image,cell_percent,image_percent_1,image_percent_2
 %
 %
 %
-end
 
-function [proportion_1,proportion_2,proportion_3,proportion_4,C] = calculate(image)
-    C = mat2cell(image,[size(image,1)/2 size(image,1)/2],[size(image,1)/2 size(image,1)/2]);
-    number_of_image = length(find(image>0));
-    fprintf('number_of_image: %d \n ',number_of_image);
 
-    number_of_cell_1 = length(find(C{1,1 }>0));
-    proportion_1 =number_of_cell_1 /number_of_image;
-    fprintf('number_of_cell_1: %d proportion_1:%d \n ',number_of_cell_1,proportion_1);
-
-    number_of_cell_2 = length(find(C{1,2}>0));
-    proportion_2 =number_of_cell_2 /number_of_image;
-    fprintf('number_of_cell_2: %d proportion_2:%d \n ',number_of_cell_2,proportion_2);
-
-    number_of_cell_3 = length(find(C{2,1}>0));
-    proportion_3 =number_of_cell_3 /number_of_image;
-    fprintf('number_of_cell_3: %d proportion_3:%d \n ',number_of_cell_3,proportion_3);
-
-    number_of_cell_4 = length(find(C{2,2}>0));
-    proportion_4 =number_of_cell_4 /number_of_image;
-    fprintf('number_of_cell_1: %d proportion_1:%d \n ',number_of_cell_4,proportion_4);
-
-end
-%
-% imwrite(a,'bird_wzm.png');
-% imwrite(C{1,1},'bird_cell_1.png');
-% imwrite(C{1,2},'bird_cell_2.png');
-% imwrite(C{2,1},'bird_cell_3.png');
-% imwrite(C{2,2},'bird_cell_3.png');
+%%
+end %   end of function
