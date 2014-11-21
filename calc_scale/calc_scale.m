@@ -1,8 +1,8 @@
 %% matlabpool local 4;
 
-% addpath(genpath('F:\paper\experiment\sketch_retrieval_project\calc_scale\AnisotropicDetector\'));
-
-addpath(fullfile(pwd,'AnisotropicDetector'));
+addpath(genpath('F:\paper\experiment\sketch_retrieval_project\calc_scale\AnisotropicDetector\'));
+% 
+% addpath(fullfile(pwd,'AnisotropicDetector'));
 
 %% Begin Operation
 t = 30;
