@@ -1,4 +1,4 @@
-function [A1,A2,A3,A4] = image_divide( image,cell_percent,image_percent)
+function [D,D1,D2,D3,D4,D5] = image_divide_v2( image,cell_percent,image_percent)
 
 %%IMAGE_DIVIDE 此处显示有关此函数的摘要
 %   此处显示详细说明
@@ -27,51 +27,88 @@ cell_condition = image_percent;
 
 %% 矩阵E中第一行是image_percent,第二行是cell_percent
 [E1,E2,E3,E4,E5,F1,F2,F3,F4,F5] = calculate_interest_points_distribution(image); 
+D =[1];
+Q = matrix_expand(D);
 
 %%
 D1=[];  %   记录分割情况，元素值为1表示分割，元素值为0表示不分割
+E1 = reshape(E1,[2 2])';
+F1 = reshape(F1,[2 2])';
 for i=1:size(E1,2)
-    
-    [result] = calculate_condition(E1(i),F1(i)); %给定一组image_percent,cell_percent判断它是否需要分割
-    D1(i) = result;
+    for j=1:size(E1,2)
+        if Q(i,j) == 0
+            D1(i,j) = -1;
+        else
+            [result] = calculate_condition(E1(i,j),F1(i,j)); %给定一组image_percent,cell_percent判断它是否需要分割
+            D1(i,j) = result; 
+        end 
+    end
 end
-A1 = reshape(D1,[2 2])';
+Q1 = matrix_expand(D1);
 
 %%
 D2=[];  %   记录分割情况，元素值为1表示分割，元素值为0表示不分割
+E2 = reshape(E2,[4 4])';
+F2 = reshape(F2,[4 4])';
 for i=1:size(E2,2)
-    
-    [result] = calculate_condition(E2(i),F2(i)); %给定一组image_percent,cell_percent判断它是否需要分割
-    D2(i) = result;
+    for j=1:size(E2,2)
+        if Q1(i,j) == 0
+            D2(i,j) = -1;
+            fprintf('sadfasfa');
+        else
+            [result] = calculate_condition(E2(i,j),F2(i,j)); %给定一组image_percent,cell_percent判断它是否需要分割
+            D2(i,j) = result; 
+        end 
+    end
 end
-A2 = reshape(D2,[4 4])';
+Q2 = matrix_expand(D2);
 
 %%
 D3=[];  %   记录分割情况，元素值为1表示分割，元素值为0表示不分割
+E3 = reshape(E3,[8 8])';
+F3 = reshape(F3,[8 8])';
 for i=1:size(E3,2)
-    
-    [result] = calculate_condition(E3(i),F3(i)); %给定一组image_percent,cell_percent判断它是否需要分割
-    D3(i) = result;
+    for j=1:size(E3,2)
+        if Q2(i,j) == 0
+            D3(i,j) = -1;
+        else
+            [result] = calculate_condition(E3(i,j),F3(i,j)); %给定一组image_percent,cell_percent判断它是否需要分割
+            D3(i,j) = result; 
+        end 
+    end
 end
-A3 = reshape(D3,[8 8])';
-
+Q3 = matrix_expand(D3);
 %%
 D4=[];  %   记录分割情况，元素值为1表示分割，元素值为0表示不分割
+E4 = reshape(E4,[16 16])';
+F4 = reshape(F4,[16 16])';
 for i=1:size(E4,2)
-    
-    [result] = calculate_condition(E4(i),F4(i)); %给定一组image_percent,cell_percent判断它是否需要分割
-    D4(i) = result;
+    for j=1:size(E4,2)
+        if Q3(i,j) == 0
+            D4(i,j) = -1;
+        else
+            [result] = calculate_condition(E4(i,j),F4(i,j)); %给定一组image_percent,cell_percent判断它是否需要分割
+            D4(i,j) = result; 
+        end 
+    end
 end
-A4 = reshape(D4,[16 16])';
+Q4 = matrix_expand(D4);
 
 %%
 D5=[];  %   记录分割情况，元素值为1表示分割，元素值为0表示不分割
+E5 = reshape(E5,[32 32])';
+F5 = reshape(F5,[32 32])';
 for i=1:size(E5,2)
-    
-    [result] = calculate_condition(E5(i),F5(i)); %给定一组image_percent,cell_percent判断它是否需要分割
-    D5(i) = result;
+    for j=1:size(E5,2)
+        if Q4(i,j) == 0
+            D5(i,j) = -1;
+        else
+            [result] = calculate_condition(E5(i,j),F5(i,j)); %给定一组image_percent,cell_percent判断它是否需要分割
+            D5(i,j) = result; 
+        end 
+    end
 end
-
+Q5 = matrix_expand(D5);
 % A1 = reshape(D1,[2 2])';
 % A2 = reshape(D2,[4 4])';
 % A3 = reshape(D3,[8 8])';

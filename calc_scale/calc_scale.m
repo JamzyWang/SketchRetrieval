@@ -26,7 +26,7 @@ for i = 1:len
 
   [result] = andiff( img, linspace(1.2,16,t), sigma, 3, 1000, t);
   a = max(result.scaleMat, [], 3);
-  figure;imshow(a);
+  figure;imshow(a);imwrite(a,strcat(int2str(i),'.png'));
   
   
   [filethstr, name, ext] = fileparts(imgPath);
