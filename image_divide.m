@@ -1,4 +1,4 @@
-function [D,D1,D2,D3,D4,D5] = image_divide_v2( image,cell_percent,image_percent)
+function [D,D1,D2,D3,D4,D5] = image_divide( image,cell_percent,image_percent)
 
 %%IMAGE_DIVIDE 此处显示有关此函数的摘要
 %   此处显示详细说明
