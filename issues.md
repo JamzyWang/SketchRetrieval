@@ -9,3 +9,9 @@ size("图像名")：二维还是三维
 
 
 4.总结canny边缘检测的缺陷。然后说明为了解决这个缺陷我们采用了什么样的办法。
+
+Todo:
+
+1.提取sketch和image的特征：【global feature , local feature】
+
+2.matching值的计算

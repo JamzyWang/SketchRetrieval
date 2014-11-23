@@ -1,4 +1,4 @@
-function [D,D1,D2,D3,D4,D5] = image_divide( image,cell_percent,image_percent)
+function [D,D1,D2,D3,D4,D5] = divide_function( image,cell_percent,image_percent)
 
 %%IMAGE_DIVIDE 此处显示有关此函数的摘要
 %   此处显示详细说明
@@ -54,7 +54,6 @@ for i=1:size(E2,2)
     for j=1:size(E2,2)
         if (Q1(i,j) == 0 || Q1(i,j) == -1)
             D2(i,j) = -1;
-            fprintf('sadfasfa');
         else
             [result] = calculate_condition(E2(i,j),F2(i,j)); %给定一组image_percent,cell_percent判断它是否需要分割
             D2(i,j) = result; 

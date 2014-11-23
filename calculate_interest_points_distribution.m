@@ -28,7 +28,7 @@ for i=1:2
         end
         E1 = [E1 image_percent];
         F1 = [F1 cell_percent];
-        fprintf('C1 %d %d: %d\n',i,j,count_interest_point);
+%         fprintf('C1 %d %d: %d\n',i,j,count_interest_point);
         
     end
 end
@@ -52,7 +52,7 @@ for i=1:4
         end
         E2 = [E2 image_percent];
         F2 = [F2 cell_percent];
-        fprintf('C2 %d %d: %d\n',i,j,count_interest_point);
+%         fprintf('C2 %d %d: %d\n',i,j,count_interest_point);
     end
 end
 Q2 = matrix_expand(D2);    %    扩展D2用于下一步计算
@@ -76,7 +76,7 @@ for i=1:8
         end
         E3 = [E3 image_percent];
         F3 = [F3 cell_percent];
-        fprintf('C3 %d %d: %d\n',i,j,count_interest_point);
+%         fprintf('C3 %d %d: %d\n',i,j,count_interest_point);
     end
 end
 Q3 = matrix_expand(D3);    %    扩展D3用于下一步计算
@@ -100,7 +100,7 @@ for i=1:16
         end
         E4 = [E4 image_percent];
         F4 = [F4 cell_percent];
-        fprintf('C4 %d %d: %d\n',i,j,count_interest_point);
+%         fprintf('C4 %d %d: %d\n',i,j,count_interest_point);
     end
 end
 Q4 = matrix_expand(D4);    %    扩展D4用于下一步计算
@@ -124,7 +124,7 @@ for i=1:32
         end
         E5 = [E5 image_percent];
         F5 = [F5 cell_percent];
-        fprintf('C5 %d %d: %d\n',i,j,count_interest_point);
+%         fprintf('C5 %d %d: %d\n',i,j,count_interest_point);
     end
 end
 
