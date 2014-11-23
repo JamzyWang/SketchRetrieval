@@ -1,5 +1,5 @@
-function [ output_args ] = sketch_preprocessing( input_args )
-%SKETCH_PREPROCESSING 此处显示有关此函数的摘要
+function [ sketchFeature ] = sketch_preprocessing( sketchPath )
+%%  SKETCH_PREPROCESSING 此处显示有关此函数的摘要
 %   此处显示详细说明
 
 %   先判断sketch的类型，是RGB，gray，binary？若不是怎么处理？
@@ -14,9 +14,11 @@ function [ output_args ] = sketch_preprocessing( input_args )
 %   Key shapes: image——> Canny operator in a multi scale manner; sketch——>a thinning operation instead of the Canny operator.
 %   a thinning operation :edge(rgb2gray(gfhog),'zerocross');
 
-
-
-
-
+%%
+sketch = imresize(sketchPath,[256 256]);
+fprintf('a thinning operation to sketch');
+if ndims(sketch) == 3
+    sketch = rgb2gray(sketch);
 end
-
+sketchFeature = edge(sketch,'zerocross');
+end   %end of function
