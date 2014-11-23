@@ -1,4 +1,4 @@
-function [ output_args ] = image_preprocessing( input_args )
+function [ output_args ] = image_preprocessing( imagePath )
 %IMAGE_PREPROCESSING 此处显示有关此函数的摘要
 %   此处显示详细说明
 %   GFHOG（RGB类型）:33*10=330；image——>canny
@@ -14,6 +14,7 @@ function [ output_args ] = image_preprocessing( input_args )
 %   SIGMA is sqrt(2); the size of the filter is chosen automatically, based
 %   on SIGMA.
 
+image = imresize(imread(imagePath), [256 256]);
 
 
 end
