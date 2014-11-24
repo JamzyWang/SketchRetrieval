@@ -18,6 +18,7 @@ fprintf('collecting feature');
 count = 1;
 for n = 1:len   % 读入所有local feature文件
     if count~= 10000000
+        count %打印程序执行进度
         featurePath = features_list{n};
         %         fprintf('%d processing %s\n', n, featurePath);
         local_feature = load(featurePath,'hog_feature');
@@ -43,10 +44,8 @@ fprintf('finished collecting feature');
 % 矩阵X的每一行代表一个点，每一列代表每个点的变量
 %
 [IDX,C] = kmeans(feature,200,'MaxIter',100); % 对特征进行kmeans聚类，聚类中心个数有实验效果确定（I_3为输入矩阵，50为聚类中心个数，100为最大的迭代次数）
-save()
-    str = strcat('visual vocabulary/',name);
-    filename = strcat(str,'_local');
-    save(filename,'hog_feature');   %   保存local feature
+filename = strcat('visual vocabulary/',vocabulary);
+save(filename,'IDX','C');   %   保存生成的词典
 
 
 
