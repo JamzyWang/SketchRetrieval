@@ -15,3 +15,6 @@ Todo:
 1.提取sketch和image的特征：【global feature , local feature】
 
 2.matching值的计算
+
+3.计算HOG特征的时间过长，考虑是否对image或者sketch进行hog特诊提取的点的数量进行控制。比如只取1000个点？
+image的处理是离线的，时间长短是否有关系呢？
