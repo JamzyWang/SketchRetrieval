@@ -1,5 +1,5 @@
 %%  预处理所有image：用AnisotropicDetector进行边缘提取
-%    输入：image_full.list文件中含有所有需要预处理的image的地址。image_full.list文件位于根目录下
+%    输入：images_full_list.txt文件中含有所有需要预处理的image的地址。images_full_list.txt文件位于根目录下
 %    输出：每一个图像对应一个.mat文件，表示进行边缘提取后的图像。所有.mat文件位于image_after_edge_detection目录下
 
 %%  image预处理分析
@@ -17,9 +17,10 @@
 %   SIGMA is sqrt(2); the size of the filter is chosen automatically, based
 %   on SIGMA.
 
-
-%% addpath(genpath('F:\paper\experiment\sketch_retrieval_project\AnisotropicDetector\'));
-addpath(fullfile(pwd,'AnisotropicDetector'));
+%%
+% addpath(genpath('F:\paper\experiment\sketch_retrieval_project\AnisotropicDetector\'));
+addpath(genpath('G:\Sketch_retrieval\AnisotropicDetector\'));
+% addpath(fullfile(pwd,'AnisotropicDetector'));
 
 %%  参数设置
 t = 30;
@@ -27,7 +28,7 @@ sigma = 6;
 lowScale = 2:3:17;
 
 %%  读取图像列表文件
-images_list = textread('images_full.list', '%s');
+images_list = textread('images_full_list.txt', '%s');
 len = size(images_list);
 len = len(1);
 fprintf('len %d\n', len);
@@ -45,13 +46,5 @@ for i = 1:len
   str = strcat('image_after_edge_detection/',name);
   filename = strcat(str,'_edge');
   save(filename,'a');   %   保存每一个边缘提取后的图像
-  
-%   figure;imshow(a);
-%   [filethstr, name, ext] = fileparts(imgPath);
-%   fid = fopen(fullfile(filethstr, strcat(name, '._s')), 'w');
-%   fid = fopen(fullfile('image_after_edge_detection', strcat(name, '._s')), 'w');
-%   fwrite(fid, a', 'uchar');
-%   fclose(fid);
-
 end
-%% quit;
+
