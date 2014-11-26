@@ -22,10 +22,11 @@
 addpath(genpath('G:\Sketch_retrieval\AnisotropicDetector\'));
 % addpath(fullfile(pwd,'AnisotropicDetector'));
 
-%%  参数设置
+%% ************************参数设置**************************************************************************
 t = 30;
 sigma = 6;
 lowScale = 2:3:17;
+%% ***********************************************************************************************************
 
 %%  读取图像列表文件
 images_list = textread('images_full_list.txt', '%s');

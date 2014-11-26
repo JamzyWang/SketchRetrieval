@@ -27,3 +27,33 @@ image的处理是离线的，时间长短是否有关系呢？
 7  find . -type f >result.ttx
    cut -c 3- result >image_id.txt
 
+## 函数设计和参数选择
+
+
+
+### 1. image边缘提取参数的选择
+**参数**：image_ edge_ detection.m 中的 
+t = 30，
+sigma = 6，
+lowScale = 2:3:17
+
+---
+### 2. local feature（HOG feature）中的参数选择
+
+**脚本**：feature_ extraction_ local.m
+
+**函数**：extractHOGFeatures中的参数设置
+
+---
+
+### 3. 分割函数设计，分割参数选择
+
+**分割函数**：
+divide_ function.m 中的 calculate_ condition(*image_ percent*,*cell_ percent*)
+
+**分割参数**：image_ divide.m 中的 image_ percent 和cell_ percent
+
+**备注**：是否考虑image和sketch选择不同的参数，因为sketch的兴趣点比较稀疏
+
+---
+

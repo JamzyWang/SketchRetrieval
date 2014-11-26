@@ -88,7 +88,7 @@
 备注：
 
 
-**(3)量化sketch的local feature**
+**（3）量化sketch的local feature**
 
 **输入**：（2）处理后的local feature，离线得到的visual vocablary
 
@@ -99,7 +99,7 @@
 备注：
 
 ****
-**(4)计算sketch的分割情况**
+**（4）计算sketch的分割情况**
 
 **输入**：（1）处理后的边缘图像
 
@@ -131,7 +131,7 @@
 
 **输出**：image的global feature
 
-（3）整理sketch和image的feature
+**（3）整理sketch和image的feature**
 
 对于sketch和image上的每一个兴趣点,现在已经可以得到每一个兴趣点的feature，每一个`feature = [global feature, local feature]`
 
