@@ -1,11 +1,11 @@
-function [ hog_feature] = feature_extraction_local( imgPath )
+function [hog_feature] = feature_extraction_local( imgPath )
 %EXTRACT_LOCAL_FEATURE 此处显示有关此函数的摘要
 %函数功能：计算image或者sketch的local feature
 %输入参数：image或者sketch
 %输出参数：得到image或者sketctch的hog特征，一个image对应一个.mat文件
 %
 img = imgPath;
-hog_feature = zeros(16384,36);
+hog_feature = zeros((size(imgPath,1))*(size(imgPath,1)),36);
 count = 1;
 
 for i=1:size(img,1) % 循环处理图片上每一个像素点
@@ -18,6 +18,7 @@ for i=1:size(img,1) % 循环处理图片上每一个像素点
                 hog_feature(count,:) = hog;
             end
         end
+        count = count + 1;
     end    
 end
 

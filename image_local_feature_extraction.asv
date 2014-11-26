@@ -13,12 +13,18 @@ for n = 1:len  % 循环处理每一副图片
     fprintf('%d processing %s\n', n, imgPath);
     image = load(imgPath,'a');
     
-    [hog_feature] = feature_extraction_local(image.a); 
+    [hog_feature] = feature_extraction_local(image.a);
+    
+    for
+    
+    
     
     [filethstr, name, ext] = fileparts(imgPath);
     str = strcat('image_feature/',name);
     filename = strcat(str,'_local');
     save(filename,'hog_feature');   %   保存local feature
+    
+    fprintf('%d finished %s\n', n, imgPath);    
 end
 
 

@@ -24,3 +24,6 @@ image的处理是离线的，时间长短是否有关系呢？
 5.用于提取词典的HOG特征的量应该是多少？从哪些图像上提取？
 
 6.git中如何丢弃本地的所有修改（不提交任何修改），直接从远程仓库中pull，覆盖本地的文件
+
+7. find . -type f >result.ttx
+8. cut -c 3- result >image_id.txt
