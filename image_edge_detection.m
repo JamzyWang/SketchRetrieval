@@ -1,4 +1,4 @@
-%%  预处理所有image：用AnisotropicDetector进行边缘提取
+%    预处理所有image：用AnisotropicDetector进行边缘提取
 %    输入：images_full_list.txt文件中含有所有需要预处理的image的地址。images_full_list.txt文件位于根目录下
 %    输出：每一个图像对应一个.mat文件，表示进行边缘提取后的图像。所有.mat文件位于image_after_edge_detection目录下
 

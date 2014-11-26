@@ -4,7 +4,7 @@
 %输出参数：得到所有图片的hog特征，一个image对应一个_.s文件，生成所有图片的_.s文件。
 %
 
-function [histogram] = quantize_image(imgPath) % imgPath 经过特征提取后的数据
+function [histogram] = quantize_local_feature(imgPath) % imgPath 经过特征提取后的数据
 
 fprintf('quantize:  %s\n',imgPath);
 fid = fopen(imgPath, 'r');
@@ -60,7 +60,7 @@ for k = 1:i %循环对每一个区域进行量化
     end
     
     % calculate distance，9*50 ，假设窗口为3*3,每一个区域的词典大小为50
-    E = pdist2(adaptive_vector,vocabulary_3,'euclidean'); 
+    E = pdist2(adaptive_vector,vocabulary_3,'euclidean');
     [~,v] = size(E);
     distance_vector = zeros(1,50);
     for j=1:v
