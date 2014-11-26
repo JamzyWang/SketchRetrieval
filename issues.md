@@ -14,3 +14,4 @@
  cut -c 3- result >image_id.txt
 
 
+**git中如何放弃本地的所有修改**
