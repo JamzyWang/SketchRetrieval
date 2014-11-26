@@ -2,7 +2,6 @@
 
 2.如何一次性向代码仓库中提交所有被修改过的文件 
 
-
 3.判断图像类型
 imfinfo(“图像名")：
 size("图像名")：二维还是三维
@@ -25,5 +24,6 @@ image的处理是离线的，时间长短是否有关系呢？
 
 6.git中如何丢弃本地的所有修改（不提交任何修改），直接从远程仓库中pull，覆盖本地的文件
 
-7. find . -type f >result.ttx
-8. cut -c 3- result >image_id.txt
+7  find . -type f >result.ttx
+   cut -c 3- result >image_id.txt
+

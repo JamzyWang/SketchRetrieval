@@ -1,4 +1,53 @@
-Sketch_retrieval
-================
 
-This project is my expremient of sketch-based image retrieval paper.
+# 整个sketch retrieval的处理流程
+---
+
+## 1.离线处理（处理image）
+
+**（1）边缘提取：**
+
+**输入**：所有原始图像
+
+**处理脚本**：image_ edge_ detection.m
+
+**输出**：所有图像的边缘图像
+
+备注：处理时间较长
+
+**（2）提取图像的local feature：**
+
+**输入**：（1）处理得到的边缘图像
+
+**处理脚本**：image_ local_ feature_extraction.m
+
+**输出**：所有图像的local feature
+
+备注：处理时间较长，相比(1)时间要短
+
+**（3）预处理图像的分割情况**
+
+**输入**：（1）处理得到的边缘图像
+
+**处理脚本**：image_divide.m
+
+**输出**：每一个图像的分割情况
+
+**备注**：
+1）处理时间较快；
+2）图像的分割情况可能用于匹配值计算（类似two-way-matching）
+
+
+
+## 2.在线处理
+
+### 2.1 处理sketch
+
+（2）
+
+（3）
+
+（4）
+
+### 2.2 处理image
+
+
