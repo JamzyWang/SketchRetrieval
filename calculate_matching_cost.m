@@ -5,7 +5,7 @@ function [ output_args ] = calculate_matching_cost(sketchFeature,imageFeature )
 %       sketch:经过预处理的sketch
 %       image:离线处理好的image
 
-
+%%  计算匹配值
 
 
 
