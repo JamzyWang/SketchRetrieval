@@ -14,7 +14,7 @@ len = size(features_list);
 len = len(1);
 fprintf('len %d\n', len);
 
-feature = zeros(10000,36);   %存储所有local feature的矩阵
+feature = zeros(500000,36);   %存储所有local feature的矩阵
 zero_feature = zeros(1,36);
 fprintf('start collecting feature \n');
 
