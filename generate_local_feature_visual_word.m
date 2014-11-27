@@ -5,7 +5,7 @@
 %
 
 %%
-features_list = textread('local_feature_full.list', '%s'); % local feature列表
+features_list = textread('local_feature_full_list.txt', '%s'); % local feature列表
 len = size(features_list);
 len = len(1);
 fprintf('len %d\n', len);
@@ -18,6 +18,7 @@ fprintf('collecting feature');
 count = 1;
 for n = 1:len   % 读入所有local feature文件
     if count~= 10000000
+        memory
         count %打印程序执行进度
         featurePath = features_list{n};
         %         fprintf('%d processing %s\n', n, featurePath);
