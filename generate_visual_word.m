@@ -21,7 +21,7 @@ feature = local_feature.feature;
 
 fprintf('start to kmeans\n');
 
-[IDX,C] = kmeans(feature,2000,'MaxIter',100); % 对特征进行kmeans聚类，聚类中心个数有实验效果确定（I_3为输入矩阵，50为聚类中心个数，100为最大的迭代次数）
+[IDX,C] = kmeans(feature,2000,'MaxIter',100, 'Emptyaction','singleton'); % 对特征进行kmeans聚类，聚类中心个数有实验效果确定（I_3为输入矩阵，50为聚类中心个数，100为最大的迭代次数）
 
 fprintf('finished kmenas\n');
 
