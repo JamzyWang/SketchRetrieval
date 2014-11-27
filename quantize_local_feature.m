@@ -43,11 +43,13 @@ histogram = zeros(1,size(visual_vocabulary,1));
 
 %%
 for i=1:size(edge_feature,2)
-    fprintf('%d \n', i);
+    %     fprintf('%d \n', i);
     if edge_feature(i)~=0  %即当前点为兴趣点
         E = pdist2(local_feature(i,:),visual_vocabulary); %  E是65536*2000
         [~,I] = min(E,[],2); % I为距离最近的单词的索引（1~2000中的某一个）
         histogram(i) = I; % 记录当前兴趣点量化后的索引号
+    else
+        histogram(i) = 0;
     end
 end
 

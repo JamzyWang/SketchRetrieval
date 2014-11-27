@@ -36,7 +36,6 @@ for i = 1:len
     
     [histogram] = quantize_local_feature(local_feature,edge_feature,visual_vocabulary);
     
-    a = histogram;
     
     [filethstr, name, ext] = fileparts(local_feature_Path);
     str = strcat('local_feature_after_quantization/',name);
