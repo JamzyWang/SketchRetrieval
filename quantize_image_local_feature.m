@@ -16,7 +16,7 @@ fprintf('len %d\n', len);
 edge_list = textread('edge_full_list.txt', '%s');   %∂¡»°edge feature
 
 %%  ∂¡»°visual vocabulary
-Mat = load('visual_vocabulary/vocabulary.mat','C');
+Mat = load('visual_vocabulary/vocabulary_2000.mat','C');
 visual_vocabulary = Mat.C;
 clear Mat;
 
@@ -30,7 +30,7 @@ for i = 1:len
     
     %   ∂¡»°edge feature
     edge_Path = edge_list{i};
-    fprintf('%d edge feature %s\n', i, edge_Path);
+%     fprintf('%d edge feature %s\n', i, edge_Path);
     edge = load(edge_Path);
     edge_feature = edge.a;
     
