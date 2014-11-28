@@ -4,7 +4,6 @@ intermediate_data/
 lib/
 retrieval_result/
 sketch_dataset/
-visual_vocabulary/
 generateed_image/
 image_after_edge_detection/
 image_matrix_after_divide/

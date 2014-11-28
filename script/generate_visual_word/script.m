@@ -1,5 +1,5 @@
-generate_visual_word_1500.m;
-generate_visual_word_2500.m;
-generate_visual_word_3000.m;
-generate_visual_word_5000.m;
-generate_visual_word_6000.m;
+generate_visual_word_1500;
+generate_visual_word_2500;
+generate_visual_word_3000;
+generate_visual_word_5000;
+generate_visual_word_6000;

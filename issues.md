@@ -16,3 +16,7 @@
 
 
 **git中如何放弃本地的所有修改**
+
+
+**matlab脚本后台执行**
+nohup matlab -nojvm -nodisplay -nosplash < matlabscript.m 1>running.log 2>running.err &
