@@ -47,4 +47,12 @@ divide_ function.m 中的 calculate_ condition(*image_ percent*,*cell_ percent*)
 
 ---
 
+**4.global feature的设计**
 
+**两种思路**：
+
+1）计算某给点相对其他点的距离，并对距离进行量化。
+
+2）计算far点，near点。
+
+3） far点和near点的比例，对这个比例进行量化（为什么没有严格的利用距离，为了容错，sketch和image有一定的差异，不能这么严格）

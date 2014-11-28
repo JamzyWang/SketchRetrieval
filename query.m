@@ -1,9 +1,10 @@
-%
+%% 
 %函数功能：检索与输入sketch相似的图片
 %输入参数：sketch地址
 %输出参数：得到相似图片
 %
 
+%%
 function [sv,si,distance_vector,hog_feature,sketch_histogram] = query(sketchPath)
 
 fid = fopen('db.txt', 'r'); %db.txt图片数据库
