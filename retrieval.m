@@ -7,7 +7,6 @@
 %%
 function [retrieval_result] =retrieval(sketchPath)
 
-
 %%  ****************************对sketch预处理得到edge feature**********************************************************
 fprintf('对sketch预处理 \n');
 [sketch_edge_feature] = sketch_processing(sketchPath);
@@ -30,7 +29,7 @@ fprintf('计算sketch的分割情况\n');
 cell_percent = 0.2; %   定义两个参数
 image_percent = 0.2;%   定义两个参数
 
-[sketch_D,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5] = divide_function(sketch_edge_feature,cell_percent,image_percent);
+[~,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5] = divide_function(sketch_edge_feature,cell_percent,image_percent);
 
 %%  ******************************计算sketch的global feature*************************************************
 fprintf('计算sketch的global feature \n');
@@ -60,7 +59,7 @@ fprintf('len %d\n', len);
 image_edge_list = textread('edge_full_list.txt', '%s');   %读取edge feature
 
 %%  ************************记录检索结果********************************************
-retrieval_result = zeros();
+retrieval_result = zeros(2,len); %第一行记录匹配值，第二行记录对应的image_id
 %% ********************************************************************************
 
 for i = 1:len
@@ -81,20 +80,23 @@ for i = 1:len
     [image_G1,image_G2,image_G3,image_G4,image_G5] = feature_extraction_global(image_edge_feature,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
     
     %% ***************************整理image的特征[global feature,local feature]***************
-     % image local feature
+     % local feature:一个1*65536的矩阵(每一个值表示词典中的某一个单词)
      % image_local_feature;
-     % image global feature
+     % global feature:image_G1,image_G2,image_G3,image_G4,image_G5
      % image_G1,image_G2,image_G3,image_G4,image_G5;
      
     %%   计算sketch和image的匹配情况，记录匹配值
-    [similarity] = calculate_matching_cost(sketch_feature,image_feature,sketch_D,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
-    
-    
+    [similarity] = calculate_matching_cost(sketch_local_feature,image_local_feature,sketch_G1,sketch_G2,sketch_G3,sketch_G4,sketch_G5,image_G1,image_G2,image_G3,image_G4,image_G5);
+       
     %   [filethstr, name, ext] = fileparts(local_feature_Path);
-    [~, name, ~] = fileparts(local_feature_Path);
+    [~, name, ~] = fileparts(local_feature_Path); % name为“1000004_edge_local_quan.mat”这种形式
     
-    %对于每一个image,需要记录[similarity , name]
-    retrieval_result
+    image_id = str2double(strrep(name,'_edge_local_quan',''));
+   
+    %% 对于每一个image,需要记录[similarity , name]
+    retrieval_result(1,i) = similarity;
+    retrieval_result(2,i) = image_id;
+    
     
 end
 
