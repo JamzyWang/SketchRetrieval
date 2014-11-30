@@ -1,0 +1,1 @@
+[retrieval_result,sketch_edge_feature,sketch_local_feature_before_quantization,sketch_local_feature,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5,sketch_G1,sketch_G2,sketch_G3,sketch_G4,sketch_G5,image_local_feature,image_edge_feature,image_G1,image_G2,image_G3,image_G4,image_G5] =retrieval('test_sketch.png');

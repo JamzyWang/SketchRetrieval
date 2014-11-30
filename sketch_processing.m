@@ -15,8 +15,8 @@ function [ sketchFeature ] = sketch_processing( sketchPath )
 %   a thinning operation :edge(rgb2gray(gfhog),'zerocross');
 
 %%
-sketch = imresize(sketchPath,[256 256]);
-fprintf('a thinning operation to sketch');
+sketch = imresize(imread(sketchPath),[256 256]);
+fprintf('a thinning operation to sketch \n');
 if ndims(sketch) == 3
     sketch = rgb2gray(sketch);
 end

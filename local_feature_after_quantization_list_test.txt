@@ -1,0 +1,5 @@
+local_feature_after_quantization/GFHOG/1000004_edge_local_quan.mat
+local_feature_after_quantization/GFHOG/1000067_edge_local_quan.mat
+local_feature_after_quantization/GFHOG/1000068_edge_local_quan.mat
+local_feature_after_quantization/GFHOG/1000095_edge_local_quan.mat
+local_feature_after_quantization/GFHOG/1000120_edge_local_quan.mat
