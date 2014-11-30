@@ -55,4 +55,4 @@ divide_ function.m 中的 calculate_ condition(*image_ percent*,*cell_ percent*)
 
 2）计算far点，near点。
 
-3） far点和near点的比例，对这个比例进行量化（为什么没有严格的利用距离，为了容错，sketch和image有一定的差异，不能这么严格）
+3） far点和near点的比例，对这个比例进行量化（为什么没有严格的利用距离，为了容错，sketch和image有一定的差异，不能这么严格）——>这一步也是只针对兴趣点，不计算非兴趣点的值

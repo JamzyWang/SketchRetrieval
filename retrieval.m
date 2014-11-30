@@ -47,7 +47,7 @@ sketch_histogram
 fprintf('循环计算每一张图像的匹配值\n');
 
 %  读取文件
-local_feature_list = textread('local_feature_full_list.txt', '%s'); %读取local feature
+local_feature_list = textread('local_feature_after_quantization_list.txt', '%s'); %读取量化后的local feature
 len = size(local_feature_list);
 len = len(1);
 fprintf('len %d\n', len);
@@ -71,7 +71,8 @@ for i = 1:len
     edge_feature = edge.a;
     
     %   根据sketch的分割情况计算image的global feature
-    [image_global_feature] = feature_extraction_global(edge_feature,sketch_D,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
+    %   函数原型：function [G1,G2,G3,G4,G5] = feature_extraction_global(image,D1,D2,D3,D4,D5)
+    [G1,G2,G3,G4,G5] = feature_extraction_global(edge_feature,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
     
     %   整理image的特征[global feature,local feature]
     
