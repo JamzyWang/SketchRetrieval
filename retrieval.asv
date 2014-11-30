@@ -60,7 +60,7 @@ fprintf('len %d\n', len);
 image_edge_list = textread('edge_full_list.txt', '%s');   %读取edge feature
 
 %%  ************************记录检索结果********************************************
-retrieval_result = zeros();
+retrieval_result = zeros();0
 %% ********************************************************************************
 
 for i = 1:len

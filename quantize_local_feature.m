@@ -9,6 +9,7 @@ function [histogram] = quantize_local_feature(local_feature,edge_feature,visual_
 % local_feature:65536*36
 % edge_feature:256*256
 % visual_vocabulary:2000*36
+% histogram:1*65536(每一个值表示词典中的某一个单词)
 
 %% **********************************************************************************************************************
 %   计算local feature时只计算了edge feature中的兴趣点（值为非零的点）
@@ -22,6 +23,7 @@ function [histogram] = quantize_local_feature(local_feature,edge_feature,visual_
 %   and columns correspond to variables. D is an MX-by-MY matrix, with the
 %   (I,J) entry equal to distance between observation I in X and
 %   observation J in Y.
+
 
 
 %% 为了计算方便，调整 edge_feature:256*256——> 1*65536
@@ -39,7 +41,7 @@ function [histogram] = quantize_local_feature(local_feature,edge_feature,visual_
 edge_feature = reshape(edge_feature',1,[]);
 
 %%
-histogram = zeros(1,size(visual_vocabulary,1));
+histogram = zeros(1, size(edge_feature,2));
 
 %%
 for i=1:size(edge_feature,2)

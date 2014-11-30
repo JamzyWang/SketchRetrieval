@@ -4,6 +4,9 @@ function [G1,G2,G3,G4,G5] = feature_extraction_global(image,D1,D2,D3,D4,D5)
 %   脚本功能：计算image或者image的global feature
 %   输入参数：image或者sketch的边缘图像，sketch的分割矩阵（待考虑点，输入image的分割矩阵）
 %   输出参数：image或者sketch的global feature
+%            每一层的global feature:G1,G2,G3,G4,G5   
+%
+%
 
 %% ************************************************************************************
 %                    计算每一层cell中的每个元素的global feture
