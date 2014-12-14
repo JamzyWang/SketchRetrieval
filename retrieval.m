@@ -88,8 +88,10 @@ for i = 1:len
      % image_G1,image_G2,image_G3,image_G4,image_G5;
      
     %%   计算sketch和image的匹配情况，记录匹配值
-    [similarity] = calculate_matching_cost(sketch_local_feature,image_local_feature,sketch_G1,sketch_G2,sketch_G3,sketch_G4,sketch_G5,image_G1,image_G2,image_G3,image_G4,image_G5,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
-       
+    [similarity_1,similarity_2,similarity_3,similarity_4,similarity_5] = calculate_matching_cost(sketch_local_feature,image_local_feature,sketch_G1,sketch_G2,sketch_G3,sketch_G4,sketch_G5,image_G1,image_G2,image_G3,image_G4,image_G5,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
+     
+    similarity =similarity_1+similarity_2+similarity_3+similarity_4+similarity_5;
+    
     %   [filethstr, name, ext] = fileparts(local_feature_Path);
     [~, name, ~] = fileparts(local_feature_Path); % name为“1000004_edge_local_quan.mat”这种形式
     

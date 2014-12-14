@@ -4,8 +4,8 @@
 %输出参数：得到所有图片的hog特征，一个image对应一个_.s文件，生成所有图片的_.s文件。
 %
 %%
-clc;
-clear;
+%clc;
+%clear;
 
 %%  读取文件
 local_feature_list = textread('local_feature_full_list.txt', '%s'); %读取local feature

@@ -44,7 +44,7 @@ for i = 1:len
   a = max(result.scaleMat, [], 3);  %   a为进行边缘提取后的图像
   
   [filethstr, name, ext] = fileparts(imgPath);
-  str = strcat('image_after_edge_detection/',name);
+  str = strcat('test/',name);
   filename = strcat(str,'_edge');
   save(filename,'a');   %   保存每一个边缘提取后的图像
 end

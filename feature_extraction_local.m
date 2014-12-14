@@ -23,10 +23,3 @@ for i=1:size(img,1) % 循环处理图片上每一个像素点
 end
 
 end
-
-%                     可视化hog特征
-%                     if ((i == 16) && (j == 9))
-%                         figure;
-%                         imshow(img); hold on;
-%                         plot(ptVis, 'Color','green');
-%                     end

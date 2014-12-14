@@ -56,3 +56,15 @@ divide_ function.m 中的 calculate_ condition(*image_ percent*,*cell_ percent*)
 2）计算far点，near点。
 
 3） far点和near点的比例，对这个比例进行量化（为什么没有严格的利用距离，为了容错，sketch和image有一定的差异，不能这么严格）——>这一步也是只针对兴趣点，不计算非兴趣点的值
+
+
+
+## 待会做：
+
+**计算一下相同图像（image）的结果**
+
+
+**仔细检查edge feature图像和local feature 图像顺序是否对应** 
+
+
+**不考虑global feature，local feature的匹配原则上应该是BOVW，应该可以正确匹配的。**
