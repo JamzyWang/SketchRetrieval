@@ -165,7 +165,7 @@
 
 **输入**：sketch，所有image
 
-**处理脚本**：`query_sketch.m`
+**处理脚本**：`retrieval.m`
 
 **输出**：最终的匹配值
 
