@@ -68,3 +68,11 @@ divide_ function.m 中的 calculate_ condition(*image_ percent*,*cell_ percent*)
 
 
 **不考虑global feature，local feature的匹配原则上应该是BOVW，应该可以正确匹配的。**
+
+
+## 待写函数
+### 1.兴趣点筛选函数：interest_ points_ screening
+
+### 2.自适应量化函数：adaptive_ weighting_ quantization
+
+### 3.匹配函数：calculate_ matching_cost
