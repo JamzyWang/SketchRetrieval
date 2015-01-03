@@ -76,10 +76,10 @@ for i = 1:len
     fprintf('%d edge feature %s\n', i, edge_Path);
     edge = load(edge_Path);
     image_edge_feature = edge.a; % image_edge_feature:一个256*256的矩阵(每一个非零值代表图像边缘)
-    
+    new_image_dege_feature = interest_points_screening(sketch_edge_feature,origin_image_edge_map);
     %%   根据sketch的分割情况计算image的global feature
      %    函数原型：function [G1,G2,G3,G4,G5] = feature_extraction_global(image,D1,D2,D3,D4,D5)
-    [image_G1,image_G2,image_G3,image_G4,image_G5] = feature_extraction_global(image_edge_feature,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
+    [image_G1,image_G2,image_G3,image_G4,image_G5] = feature_extraction_global(new_image_dege_feature,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
     
     %% ***************************整理image的特征[global feature,local feature]***************
      % local feature:一个1*65536的矩阵(每一个值表示词典中的某一个单词)
