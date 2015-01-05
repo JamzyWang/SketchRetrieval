@@ -3,31 +3,35 @@
 
 ## 1.离线处理（处理image）
 
-**（1）边缘提取**
+**（1）对所有image进行边缘提取**
 
 **输入**：所有原始图像
 
-**处理脚本**：`image_ edge_ detection.m`
+**处理脚本（批处理）**：`image_ edge_ detection.m`
+
+**处理函数：**`AnisotropicDetector`
 
 **输出**：所有图像的边缘图像
 
 备注：处理时间较长
 
 
-**（2）计算图像的local feature**
+**（2）计算所有image的local feature**
 
-**输入**：（1）处理得到的边缘图像
+**输入**：（1）处理后得到的所有边缘图像
 
-**处理脚本**：`image_ local_ feature_extraction.m`
+**处理脚本（批处理）**：`image_ local_ feature_extraction.m`
+
+**处理函数：** `feature_ extraction_local.m`
 
 **输出**：所有图像的local feature
 
 备注：处理时间较长，相比(1)时间要短
 
 
-**（3）计算图像的视觉词典visual vocabulary**
+**（3）计算图像的视觉词典codebook**
 
-**输入**：（2）得到的local feature
+**输入**：（2）得到的所有图像的local feature
 
 **处理脚本**：`generate_local_feature_visual_word.m`
 
@@ -40,18 +44,22 @@
 
 **输入**：（2）得到的local feature,(3)得到的visual vocabulary
 
-**处理脚本**：`quantize_image_local_feature.m`
+**处理脚本（批处理）**：`quantize_image_local_feature.m`
+
+**处理函数：** `adaptive_weigthing_quantization.m`
 
 **输出**：所有图像经过量化后的local feature
 
 **备注**：
 
 
-**（5）计算图像的分割情况**
+**（5）计算所有image的分割情况**
 
 **输入**：（1）处理得到的边缘图像
 
-**处理脚本**：`image_divide.m`
+**处理脚本（批处理）**：`image_divide.m`
+
+**处理函数：** `divide_function.m`
 
 **输出**：每一个图像的分割情况
 
@@ -65,22 +73,22 @@
 
 ### 2.1 处理sketch
 
-**（1）边缘提取**
+**（1）sketch预处理**
 
 **输入**：sketch
 
-**处理脚本**：`sketch_ processing.m`
+**处理函数**：`sketch_ processing.m`
 
 **输出**：sketch的边缘图像
 
 备注：
 
 
-**（2）计算local feature**
+**（2）计算sketch的local feature**
 
-**输入**：（1）处理后的边缘图像
+**输入**：（1）处理后的sketch
 
-**处理脚本**：`feature_ extraction_ local.m`
+**处理函数**：`feature_ extraction_ local.m`
 
 **输出**：sketch的local feature
 
@@ -89,24 +97,24 @@
 
 **（3）量化sketch的local feature**
 
-**输入**：（2）处理后的local feature，离线得到的visual vocablary
+**输入**：（2）处理后的local feature，离线得到的codebook
 
-**处理脚本**：`image_divide.m`
+**处理脚本**：`adaptive_weigthing_quantization.m`
 
-**输出**：sketch的分割情况
+**输出**：量化后的local feature
 
 备注：
 
-****
 **（4）计算sketch的分割情况**
 
 **输入**：（1）处理后的边缘图像
 
-**处理脚本**：`image_divide.m`
+**处理函数**：`divide_function.m`
 
 **输出**：sketch的分割情况
 
 备注：
+
 
 ### 2.2 计算global feature
 
@@ -116,7 +124,7 @@
 
 **输入**：sketch的边缘图像，sketch的分割情况
 
-**处理脚本**：`feature_ extraction_ global`
+**处理函数**：`feature_ extraction_ global`
 
 **输出**：sketch的global feature
 
@@ -126,7 +134,7 @@
 
 **输入**：image的边缘图像，sketch的分割情况
 
-**处理脚本**：`feature_ extraction_ global`
+**处理函数**：`feature_ extraction_ global`
 
 **输出**：image的global feature
 
@@ -134,13 +142,14 @@
 
 对于sketch和image上的每一个兴趣点,现在已经可以得到每一个兴趣点的feature，每一个`feature = [global feature, local feature]`
 
+
 #### 2.2.2 根据image的分割情况计算global feature
 
 **(1) 根据image的分割情况计算sketch的global feature**
 
 **输入**：sketch的边缘图像，image的分割情况
 
-**处理脚本**：`feature_ extraction_ global`
+**处理函数**：`feature_ extraction_ global`
 
 **输出**：sketch的global feature
 
@@ -150,7 +159,7 @@
 
 **输入**：image的边缘图像，image的分割情况
 
-**处理脚本**：`feature_ extraction_ global`
+**处理函数**：`feature_ extraction_ global`
 
 **输出**：image的global feature
 
