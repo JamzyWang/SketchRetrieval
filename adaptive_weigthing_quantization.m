@@ -1,4 +1,4 @@
-function [ output_args ] = adaptive_weigthing_quantization(local_feature,edge_feature,visual_vocabulary,window_size,paramater_orientation,paramater_distance )
+function [ histogram ] = adaptive_weigthing_quantization(local_feature,edge_feature,visual_vocabulary,window_size,paramater_orientation,paramater_distance )
 %ADAPTIVE_WEIGTHING_QUANTIZATION 此处显示有关此函数的摘要
 %   此处显示详细说明
 
@@ -105,10 +105,10 @@ for i=1:size(edge_map,1)
             end
             
             %% 计算权重矩阵：一个窗口大小
-            weigthing_matrix = zeros(size(gradient_orientation,1),size(gradient_orientation,2));
+            weighting_matrix = zeros(size(gradient_orientation,1),size(gradient_orientation,2));
             for m=1:size(gradient_orientation,1)
                 for n=1:size(gradient_orientation,2)
-                    weigthing_matrix(m,n)=( exp(-gradient_orientation_distance_matrix(m,n)/(paramater_orientation^2)) * exp(-distance_matrix(m,n)/(paramater_distance^2)))/N;
+                    weighting_matrix(m,n)=( exp(-gradient_orientation_distance_matrix(m,n)/(paramater_orientation^2)) * exp(-distance_matrix(m,n)/(paramater_distance^2)))/N;
                     %计算距离插值:paramater_orientation和paramater_distance是公式中的两个参数，N是一个正则项
                 end
             end
@@ -130,14 +130,22 @@ for i=1:size(edge_map,1)
         end
     end
 end
+histogram = reshape(histogram,[],1)';
 
-
-    function [distance] = quantize_local_feature(weigthing_matrix,local_feature_index_matrix_window,edge_map_matrix_window)
+    function [I] = quantize_local_feature(weighting_matrix,local_feature_index_matrix_window,edge_map_matrix_window)
         
+        %获得窗口内的兴趣点的local feature:(window_size*window_size)*36
+        local_feature_matrix_window = zeros(size(edge_map_matrix_window,1)*size(edge_map_matrix_window,2),36);
+        index_matrix_window = reshape(local_feature_index_matrix_window',1,[]);
+        for r=1:size(index_matrix_window,2)
+            local_feature_matrix_window(r)=local_feature(index_matrix_window(r));
+        end
         
-        % 计算窗口中的值——to do list
-        E = pdist2(local_feature(i,:),visual_vocabulary); %  E是65536*2000
-        [~,I] = min(E,[],2); % I为距离最近的单词的索引（1~2000中的某一个）
+        weighting_matrix = reshape(weighting_matrix',1,[]);
+        E = pdist2(local_feature_matrix_window,visual_vocabulary);
+        local_feature_codeword_distance_matrix = repmat(weighting_matrix,1,size(index_matrix_window,2)).*E;
+        final_distance_matrix = sum(local_feature_codeword_distance_matrix,1); %得到local feature到codeword的最后的距离值
+        [~,I] = min(final_distance_matrix);
         
     end
 

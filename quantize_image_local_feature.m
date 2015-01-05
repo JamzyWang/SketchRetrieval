@@ -6,6 +6,10 @@
 %%
 %clc;
 %clear;
+%% 定义参数
+window_size = 17;
+paramater_orientation = 0.2;
+paramater_distance = 3;
 
 %%  读取文件
 local_feature_list = textread('local_feature_full_list.txt', '%s'); %读取local feature
@@ -34,8 +38,8 @@ for i = 1:len
     edge = load(edge_Path);
     edge_feature = edge.a;
     
-    [histogram] = quantize_local_feature(local_feature,edge_feature,visual_vocabulary);
-    
+    %% 自适应量化
+    [histogram] = adaptive_weigthing_quantization(local_feature,edge_feature,visual_vocabulary,window_size,paramater_orientation,paramater_distance );
     
     [filethstr, name, ext] = fileparts(local_feature_Path);
     str = strcat('local_feature_after_quantization/',name);

@@ -110,66 +110,25 @@ end
 
 end %end of function
 
-% %% 匹配值计算函数
-% function  [similarity_value] = similarity_calculate_per_cell(sketch_local_feature,image_local_feature,sketch_global_feature,image_global_feature)
-% %传入的4个参数都是N*N的形式，如128*128,64*64,32*32，16*16，8*8
-% 
-% sketch_global_feature = sketch_global_feature+1; %把global feature的取值范围从0~63变为1~64
-% image_global_feature = image_global_feature+1;   %把global feature的取值范围从0~63变为1~64
-% 
-% %% *********************把image和sketch的特征整理成直方图的形式*************************************************
-% 
-% % 这里2000为词典的大小，histogram(i,j)表示global feature为i,local feature为j的feature的个数
-% histogram_sketch = zeros(64,2000);
-% histogram_image = zeros(64,2000);
-% len = size(sketch_local_feature,1);
-% 
-% %处理sketch
-% for i=1:len
-%     for j=1:len
-%         if sketch_local_feature(i,j)>0 %只处理兴趣点
-%             histogram_sketch(sketch_global_feature(i,j),sketch_local_feature(i,j)) =  histogram_sketch(sketch_global_feature(i,j),sketch_local_feature(i,j))+1;
-%         end
-%     end
-% end
-% 
-% 
-% %处理image
-% for i=1:len
-%     for j=1:len
-%         if image_local_feature(i,j)>0 %只处理兴趣点
-%             histogram_sketch(image_global_feature(i,j),image_local_feature(i,j)) =  histogram_image(image_global_feature(i,j),image_local_feature(i,j))+1;
-%         end
-%     end
-% end
-% 
-% %计算匹配值
-% similarity_value = 0;
-% for i=1:64
-%     for j=1:2000 %需要根据词典大小修改
-%         similarity_value =  similarity_value+ min(histogram_image(i,j),histogram_sketch(i,j));
-%     end
-% end
-% 
-% end
-
 %% 匹配值计算函数
 function  [similarity_value] = similarity_calculate_per_cell(sketch_local_feature,image_local_feature,sketch_global_feature,image_global_feature)
 %传入的4个参数都是N*N的形式，如128*128,64*64,32*32，16*16，8*8
 
+sketch_global_feature = sketch_global_feature+1; %把global feature的取值范围从0~63变为1~64
+image_global_feature = image_global_feature+1;   %把global feature的取值范围从0~63变为1~64
 
 %% *********************把image和sketch的特征整理成直方图的形式*************************************************
 
 % 这里2000为词典的大小，histogram(i,j)表示global feature为i,local feature为j的feature的个数
-histogram_sketch = zeros(1,2000);
-histogram_image = zeros(1,2000);
+histogram_sketch = zeros(64,2000);
+histogram_image = zeros(64,2000);
 len = size(sketch_local_feature,1);
 
 %处理sketch
 for i=1:len
     for j=1:len
         if sketch_local_feature(i,j)>0 %只处理兴趣点
-            histogram_sketch(sketch_local_feature(i,j)) =  histogram_sketch(sketch_local_feature(i,j))+1;
+            histogram_sketch(sketch_global_feature(i,j),sketch_local_feature(i,j)) =  histogram_sketch(sketch_global_feature(i,j),sketch_local_feature(i,j))+1;
         end
     end
 end
@@ -179,15 +138,20 @@ end
 for i=1:len
     for j=1:len
         if image_local_feature(i,j)>0 %只处理兴趣点
-            histogram_sketch(image_local_feature(i,j)) =  histogram_image(image_local_feature(i,j))+1;
+            histogram_sketch(image_global_feature(i,j),image_local_feature(i,j)) =  histogram_image(image_global_feature(i,j),image_local_feature(i,j))+1;
         end
     end
 end
 
 %计算匹配值
 similarity_value = 0;
+for i=1:64
     for j=1:2000 %需要根据词典大小修改
-        similarity_value =  similarity_value+ min(histogram_image(j),histogram_sketch(j));
+        similarity_value =  similarity_value+ min(histogram_image(i,j),histogram_sketch(i,j));
     end
 end
+
+end
+
+
 

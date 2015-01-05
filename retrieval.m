@@ -8,7 +8,12 @@
 % function [retrieval_result] =retrieval(sketchPath)
 
 function [retrieval_result,sketch_edge_feature,sketch_local_feature_before_quantization,sketch_local_feature,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5,sketch_G1,sketch_G2,sketch_G3,sketch_G4,sketch_G5,image_local_feature,image_edge_feature,image_G1,image_G2,image_G3,image_G4,image_G5] =retrieval(sketchPath)
-    
+   
+%% 定义参数
+window_size = 17;
+paramater_orientation = 0.2;
+paramater_distance = 3;
+
 %%  ****************************对sketch预处理得到edge feature**********************************************************
 fprintf('1.对sketch预处理 \n');
 [sketch_edge_feature] = sketch_processing(sketchPath);
@@ -23,8 +28,8 @@ Mat = load('visual_vocabulary/vocabulary_2000.mat','C'); %  读取visual vocabular
 visual_vocabulary = Mat.C;
 clear Mat;
 
-%sketch_histogram是一个1*65536的矩阵(每一个值表示词典中的某一个单词)
-[sketch_local_feature] = quantize_local_feature(sketch_local_feature_before_quantization,sketch_edge_feature,visual_vocabulary);
+%% 自适应量化
+[ sketch_local_feature ] = adaptive_weigthing_quantization(sketch_local_feature_before_quantization,sketch_edge_feature,visual_vocabulary,window_size,paramater_orientation,paramater_distance );
 
 %%  ******************************计算sketch的分割情况*****************************************************
 fprintf('4.计算sketch的分割情况\n');
@@ -90,7 +95,8 @@ for i = 1:len
     %%   计算sketch和image的匹配情况，记录匹配值
     [similarity_1,similarity_2,similarity_3,similarity_4,similarity_5] = calculate_matching_cost(sketch_local_feature,image_local_feature,sketch_G1,sketch_G2,sketch_G3,sketch_G4,sketch_G5,image_G1,image_G2,image_G3,image_G4,image_G5,sketch_D1,sketch_D2,sketch_D3,sketch_D4,sketch_D5);
      
-    similarity =similarity_1+similarity_2+similarity_3+similarity_4+similarity_5;
+    %% weighting求和
+    similarity = similarity_1 + similarity_2 + similarity_3 + similarity_4 + similarity_5;
     
     %   [filethstr, name, ext] = fileparts(local_feature_Path);
     [~, name, ~] = fileparts(local_feature_Path); % name为“1000004_edge_local_quan.mat”这种形式
